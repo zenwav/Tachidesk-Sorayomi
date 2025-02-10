@@ -34,7 +34,7 @@ jobs:
       - name: Add packaged build to release draft
         uses: softprops/action-gh-release@v1
         with:
-          tag_name: ${{ github.ref_name }}
+          tag_name: ${{ format('{0}', github.event.head_commit.timestamp) }}
           draft: false
           files: ${{ env.pkg_name }}*
           token: ${{ secrets.GITHUB_TOKEN }}
